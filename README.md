@@ -90,3 +90,34 @@ Launch Node
 
     sudo systemctl restart dymd
     journalctl -u dymd -f -o cat
+
+# Wallet & Validator
+
+Add new key
+
+    dymd keys add wallet
+
+Recover existing key
+
+    dymd keys add wallet --recover
+
+Create Validator
+
+    dymd tx staking create-validator \
+      --amount 1000000adym \
+      --commission-max-change-rate "0.05" \
+      --commission-max-rate "0.10" \
+      --commission-rate "0.05" \
+      --min-self-delegation "1" \
+      --pubkey=$(dymd tendermint show-validator) \
+      --moniker 'Your_nodename' \
+      --website "Your_website" \
+      --identity "your_keybase" \
+      --details "I Love Validator247" \
+      --security-contact "Your_mail" \
+      --chain-id dymension_1100-1 \
+      --gas auto --gas-prices 20000000000adym \
+      --gas-adjustment 1.6 \
+      --from wallet -y
+
+# DONE               
